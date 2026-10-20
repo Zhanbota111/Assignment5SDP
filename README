@@ -1,42 +1,24 @@
-#  Assignment #4 — Facade Design Pattern
+# Assignment5SDP — Strategy Pattern
 
-> **Course:** Software Design Patterns (ShP-2216)
-> **Institution:** Astana IT University
-> **Student:** Shyntemir Zhanbota (SE-2506)
+Assignment #5, ShP-2216 Software Design Patterns (Astana IT University).
 
+## Idea
+`Navigator` (Context) plans a route using interchangeable `RouteStrategy`
+implementations: car, walk, cycle, public transport. The strategy can be
+switched at runtime.
 
+## Structure
+- `RouteStrategy` — strategy interface
+- `CarStrategy`, `WalkStrategy`, `CycleStrategy`, `PublicTransportStrategy` — concrete strategies
+- `Navigator` — context, delegates to the current strategy
+- `Route` — immutable result of planning
+- `Main` — client, selects strategies
 
-##  Project Overview
-This project demonstrates the implementation of the **Facade Structural Design Pattern** in Java.
-The system models a **Home Theater** environment where multiple complex subsystem components are coordinated behind a simple, high-level interface (`HomeTheaterFacade`).
+## Run
+JDK 17. Open the project in IntelliJ IDEA and run `Main`, or:
 
+    javac -d out src/Main.java src/navigation/*.java
+    java -cp out Main
 
-
-## Architecture & Subsystems
-The project structure is organized into clean packages:
-*  **`subsystem/`** — Contains independent hardware components with distinct responsibilities:
-  * `Amplifier.java`
-  * `DvdPlayer.java`
-  * `Projector.java`
-  * `Screen.java`
-  * `TheaterLights.java`
-  * `PopcornPopper.java`
-*  **`facade/`** — Contains the central orchestrator:
-  * `HomeTheaterFacade.java`
-*  **`Main.java`** — The client entry point interacting solely with the Facade.
-
-
-
-##  Clean Code Principles Applied
-1. **Meaningful Names:** Methods like `watchMovie()` and `endMovie()` clearly express high-level intent.
-2. **Single Responsibility (SRP):** The Facade manages workflow coordination, while each subsystem class handles its own specific device logic.
-3. **Information Hiding:** Complex initialization and configuration details are completely hidden from the client.
-4. **Law of Demeter:** The client communicates only with the Facade object rather than navigating a web of multi-object calls.
-5. **Decoupled Architecture:** Subsystem classes remain independent and unaware of the Facade.
-
-
-
-##  How to Run
-1. Clone the repository:
-   ```bash
-   git clone [https://github.com/Zhanbota111/Assignment4SDP.git](https://github.com/Zhanbota111/Assignment4SDP.git)
+## Adding a new strategy
+Create a class implementing `RouteStrategy`. No existing class needs to change.
