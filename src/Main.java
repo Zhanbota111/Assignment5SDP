@@ -2,6 +2,7 @@ import navigation.CarStrategy;
 import navigation.CycleStrategy;
 import navigation.Navigator;
 import navigation.WalkStrategy;
+import navigation.PublicTransportStrategy;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,6 +17,9 @@ public class Main {
         System.out.println(navigator.plan(from, to, distanceKm));
 
         navigator.setStrategy(new CycleStrategy());
+        System.out.println(navigator.plan(from, to, distanceKm));
+
+        navigator.setStrategy(new PublicTransportStrategy());
         System.out.println(navigator.plan(from, to, distanceKm));
     }
 }
